@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from './song.service';
 
+
+interface IResponse {
+  tracks: {
+    items:[];
+  }
+}
+
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
@@ -13,11 +20,18 @@ export class SongsComponent implements OnInit {
 
 
   constructor(private songService: SongService) {
-
-    this.songs = this.songService.getSongs();
    }
 
   ngOnInit() {
+  }
+
+  searchSong() {
+    this.songService.getSongs(this.newSong)
+      .then((response: IResponse) => {
+        console.log(response)
+        this.songs = response.tracks.items;
+      })
+      .catch(error => console.log(error));
   }
 
   addSong(){
