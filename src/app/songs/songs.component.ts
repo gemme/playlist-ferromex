@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from './song.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 
 
 interface IResponse {
@@ -19,10 +21,20 @@ export class SongsComponent implements OnInit {
   songs = [];
 
 
-  constructor(private songService: SongService) {
+  constructor(private songService: SongService, private activatedRoute: ActivatedRoute, private loginService: LoginService, private router: Router) {
+
    }
 
   ngOnInit() {
+    /* this.activatedRoute.fragment.subscribe(fragment => {
+      if(fragment) {
+        let f = fragment.match(/^(.*?)&/);
+        let token: string = f[1].replace('access_token=', '');
+        console.log(token);
+        this.loginService.setToken(token);
+        //this.router.navigate(['/login'])
+      }
+    }) */
   }
 
   searchSong() {
