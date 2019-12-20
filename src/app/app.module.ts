@@ -20,6 +20,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { LoginComponent } from './login/login.component';
+import { Login2Component } from './login2/login2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     ArtistsComponent,
     AlbumsComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    Login2Component
   ],
   imports: [
     BrowserModule,

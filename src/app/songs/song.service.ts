@@ -9,34 +9,24 @@ import { LoginService } from '../login/login.service';
 export class SongService {
 
   API_URL = environment.API_URL;
+  token;
 
-  //songs = null;
-  constructor(private httpClient: HttpClient, private loginService: LoginService) { }
+  constructor(
+    private httpClient: HttpClient,
+    private loginService: LoginService) {
+    this.token = this.loginService.getToken();
+  }
 
   getSongs(nameSong){
     console.log(this.API_URL);
     const SONGS_URL = `${this.API_URL}search?q=${nameSong}&type=track&market=US&limit=3&offset=0`;
-    const token = this.loginService.getToken();
     return this.httpClient.get(SONGS_URL, {
         headers: new HttpHeaders({
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${this.token}`
         })
     })
     .toPromise();
-    /* return [{
-      name: 'El triste 2',
-      artist: 'Jose Jose',
-      url: 'http://spotify.com'
-    }, {
-      name: 'Almohada',
-      artist: 'Jose Jose',
-      url: 'http://spotify.com'
-    },{
-      name: 'Gavilan o Paloma',
-      artist: 'Jose Jose',
-      url: 'http://spotify.com'
-    }] */
   }
 }

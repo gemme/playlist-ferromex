@@ -19,9 +19,17 @@ export class SongsComponent implements OnInit {
 
   newSong = '';
   songs = [];
+  model = {
+    left: true,
+    middle: false,
+    right: false
+  };
 
 
-  constructor(private songService: SongService, private activatedRoute: ActivatedRoute, private loginService: LoginService, private router: Router) {
+  constructor(
+    private songService: SongService,
+    private loginService: LoginService,
+    private router: Router) {
 
    }
 

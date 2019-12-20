@@ -10,7 +10,9 @@ export class ArtistService {
   API_URL = environment.API_URL;
   token = null; 
 
-  constructor(private httpClient: HttpClient, private loginService: LoginService ) {
+  constructor(
+    private httpClient: HttpClient,
+    private loginService: LoginService ) {
     this.token = this.loginService.getToken();
    }
 
