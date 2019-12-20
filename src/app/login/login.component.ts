@@ -22,8 +22,10 @@ export class LoginComponent implements OnInit {
         let f = fragment.match(/^(.*?)&/);
         let token: string = f[1].replace('access_token=', '');
         console.log(token);
-        this.loginService.setToken(token);
-        //this.router.navigate(['/login'])
+        if(token){
+          this.loginService.setToken(token);
+          this.router.navigate(['']);
+        }
       }
     })
   }

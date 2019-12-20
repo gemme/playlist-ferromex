@@ -26,15 +26,9 @@ export class SongsComponent implements OnInit {
    }
 
   ngOnInit() {
-    /* this.activatedRoute.fragment.subscribe(fragment => {
-      if(fragment) {
-        let f = fragment.match(/^(.*?)&/);
-        let token: string = f[1].replace('access_token=', '');
-        console.log(token);
-        this.loginService.setToken(token);
-        //this.router.navigate(['/login'])
-      }
-    }) */
+    if(!this.loginService.getToken()){
+        this.router.navigate(['login']);
+    }
   }
 
   searchSong() {
