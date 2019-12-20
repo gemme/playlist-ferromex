@@ -8,22 +8,28 @@ import { ArtistService } from './artist.service';
 })
 export class ArtistsComponent implements OnInit, OnDestroy {
 
+  artist = '';
+
+  artists = [];
+
   constructor(private artistService: ArtistService) {
 
   }
 
   ngOnInit() {
   //let, const, var
-  this.searchArtist();
 
   }
 
   ngOnDestroy(): void {
   }
 
-searchArtist(){
-    this.artistService.getArtistsByName('Muse')
-      .then(response => console.log(response))
+  searchArtist(){
+    this.artistService.getArtistsByName(this.artist)
+      .then((response: any) => {
+        console.log(response);
+        this.artists = response.artists.items;
+      })
       .catch(error => console.log(error))
   }
 }

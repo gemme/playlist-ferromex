@@ -1,5 +1,9 @@
-<input type="text" [(ngModel)]="newSong">
-<button (click)="searchSong()">Buscar cancion</button>
+<div>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Cancion" [(ngModel)]="newSong">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="searchSong()">Buscar</button>
+</div>
 <ul>
     <li *ngFor="let song of songs">
         <a href="{{song.url}}" target="_blank">{{song.name}}</a>

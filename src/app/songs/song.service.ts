@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
 
+  API_URL = environment.API_URL;
+  token = environment.ACCESS_TOKEN;
+
   //songs = null;
   constructor(private httpClient: HttpClient) { }
 
   getSongs(nameSong){
-    const API_URL = `https://api.spotify.com/v1/search?q=${nameSong}&type=track&market=US&limit=3&offset=0`;
-    const token = 'BQC1VvuI4TM6cds2fv76zb8o8fGbKy0ksKSJqFgYb58PUt_IvCoOEnK4I8cHP6tioxaMlhwzfhqSB4iTj4M9-NJWnuINu7T3NH-xqXP_Rsvfkx1rvvVeQwftTuMuUmEd4htj-4B5KfdR1zhdLZEw';
-    return this.httpClient.get(API_URL, {
+    const SONGS_URL = `${this.API_URL}search?q=${nameSong}&type=track&market=US&limit=3&offset=0`;
+    return this.httpClient.get(SONGS_URL, {
         headers: new HttpHeaders({
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${this.token}`
         })
     })
     .toPromise();
