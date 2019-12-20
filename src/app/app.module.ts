@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSliderModule,
     MatButtonModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
