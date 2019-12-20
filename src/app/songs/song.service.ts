@@ -14,6 +14,7 @@ export class SongService {
   constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
   getSongs(nameSong){
+    console.log(this.API_URL);
     const SONGS_URL = `${this.API_URL}search?q=${nameSong}&type=track&market=US&limit=3&offset=0`;
     const token = this.loginService.getToken();
     return this.httpClient.get(SONGS_URL, {

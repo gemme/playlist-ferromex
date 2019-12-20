@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { LoginService } from '../login/login.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
 
   API_URL = environment.API_URL;
-  token = environment.ACCESS_TOKEN;
+  token = null; 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private loginService: LoginService ) {
+    this.token = this.loginService.getToken();
+   }
 
   getArtistsByName(name){
     const ARTISTS_URL = `${this.API_URL}search?q=${name}&type=artist&market=US&limit=3&offset=0`;

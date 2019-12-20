@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
         let token: string = f[1].replace('access_token=', '');
         console.log(token);
         if(token){
+          console.log('token');
+          console.log(token);
           this.loginService.setToken(token);
           this.router.navigate(['']);
         }
