@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
-  API_URL: 'https://api.spotify.com/v1/'
+  API_URL: 'https://api.spotify.com/v1/',
+  REDIRECT_URI: 'http://localhost:4200/login/'
 };
 
 /*
