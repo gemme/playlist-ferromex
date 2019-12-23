@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from './song.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 
 
 interface IResponse {
@@ -17,12 +19,24 @@ export class SongsComponent implements OnInit {
 
   newSong = '';
   songs = [];
+  model = {
+    left: true,
+    middle: false,
+    right: false
+  };
 
 
-  constructor(private songService: SongService) {
+  constructor(
+    private songService: SongService,
+    private loginService: LoginService,
+    private router: Router) {
+
    }
 
   ngOnInit() {
+    if(!this.loginService.getToken()){
+        this.router.navigate(['login']);
+    }
   }
 
   searchSong() {
