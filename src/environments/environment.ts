@@ -4,7 +4,7 @@
 export const environment = {
   production: false,
   API_URL: 'https://api.spotify.com/v1/',
-  REDIRECT_URI: 'http://localhost:4200/login/'
+  REDIRECT_URI: 'https://playlist-ferromex.herokuapp.com/login/'
 };
 
 /*
