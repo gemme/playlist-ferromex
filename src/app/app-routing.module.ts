@@ -4,11 +4,15 @@ import { SongsComponent } from './songs/songs.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { AlbumsComponent } from './albums/albums.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [{
   path: '',
   component: SongsComponent
+},{
+  path: 'login',
+  component: LoginComponent
 },{
   path: 'artists',
   component: ArtistsComponent
